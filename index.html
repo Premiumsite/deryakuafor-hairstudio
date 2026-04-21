@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Derya Bayan Kuaförü | Çayırova Saç ve Güzellik Deneyimi</title>
+  <meta name="description" content="Derya Bayan Kuaförü için hazırlanan premium ve düzenli salon web sitesi. Saç boyama, balyaj, ombre, gelin başı, makyaj, manikür pedikür ve daha fazlası Çayırova'da." />
+  <meta name="theme-color" content="#0b0911" />
+  <style>
+    :root {
+      --bg: #0b0911;
+      --bg-2: #120d19;
+      --panel: rgba(255,255,255,0.05);
+      --panel-2: rgba(255,255,255,0.07);
+      --line: rgba(255,255,255,0.09);
+      --text: #f7eff8;
+      --muted: #cdbfcc;
+      --pink: #ff6fb3;
+      --pink-2: #f5bfd8;
+      --glow: rgba(255,111,179,0.34);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --shadow: 0 22px 70px rgba(0,0,0,0.38);
+      --max: 1380px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 16% 22%, rgba(255,111,179,0.12), transparent 22%),
+        radial-gradient(circle at 88% 14%, rgba(255,111,179,0.10), transparent 20%),
+        radial-gradient(circle at 50% 60%, rgba(255,255,255,0.03), transparent 28%),
+        linear-gradient(180deg, #08070d 0%, #0b0911 40%, #0b0911 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 92%);
+      pointer-events: none;
+      opacity: .34;
+      z-index: -3;
+    }
+
+    .container { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), #ffaad0);
+      box-shadow: 0 0 18px var(--glow);
+      z-index: 9999;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .ambient span {
+      position: absolute;
+      display: block;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .18;
+      background: radial-gradient(circle, rgba(255,111,179,0.78), transparent 68%);
+      animation: drift 14s ease-in-out infinite;
+    }
+
+    .ambient span:nth-child(1) { left: -80px; top: 80px; }
+    .ambient span:nth-child(2) { right: -80px; top: 120px; animation-duration: 18s; }
+    .ambient span:nth-child(3) { left: 40%; bottom: -100px; animation-duration: 16s; }
+
+    @keyframes drift {
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(30px,-20px,0) scale(1.08); }
+    }
+
+    .scissor-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen;
+      overflow: hidden;
+    }
+
+    .scissor {
+      position: absolute;
+      width: clamp(84px, 6vw, 128px);
+      height: clamp(84px, 6vw, 128px);
+      top: -16%;
+      opacity: .95;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.65)) drop-shadow(0 0 18px rgba(255,111,179,0.78)) drop-shadow(0 0 42px rgba(255,111,179,0.36));
+      animation: fall linear infinite;
+    }
+
+    .scissor::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -220px;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 260px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, transparent 0%, rgba(255,111,179,0.08) 22%, rgba(255,111,179,0.45) 50%, rgba(255,198,223,0.92) 82%, rgba(255,255,255,0.96) 100%);
+      filter: blur(12px);
+      z-index: -2;
+    }
+
+    .scissor .blade,
+    .scissor .ring,
+    .scissor .pivot {
+      position: absolute;
+      display: block;
+    }
+
+    .scissor .blade {
+      left: 45%;
+      top: 50%;
+      width: 48%;
+      height: 7px;
+      border-radius: 999px;
+      transform-origin: 7px 50%;
+      background: linear-gradient(90deg, #ffffff 0%, #ced4dd 12%, #8d95a3 26%, #fbfbfd 44%, #9ea5b3 68%, #ffffff 100%);
+      box-shadow: 0 0 10px rgba(255,255,255,0.35);
+    }
+
+    .scissor .blade::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 20px solid #ffffff;
+      transform: translateY(-50%);
+    }
+
+    .scissor .blade.a { transform: translate(-50%, -50%) rotate(-34deg); animation: bladeA 1s ease-in-out infinite; }
+    .scissor .blade.b { transform: translate(-50%, -50%) rotate(34deg); animation: bladeB 1s ease-in-out infinite; }
+
+    .scissor .ring {
+      width: 18px;
+      height: 18px;
+      border: 4.5px solid #f7f7fb;
+      border-radius: 50%;
+      left: 18%;
+      box-shadow: 0 0 8px rgba(255,255,255,0.28);
+    }
+
+    .scissor .ring.a { top: 23%; }
+    .scissor .ring.b { top: 58%; }
+
+    .scissor .pivot {
+      width: 10px;
+      height: 10px;
+      left: 42%;
+      top: 45%;
+      border-radius: 50%;
+      background: #fff8fc;
+      box-shadow: 0 0 12px rgba(255,255,255,0.65), 0 0 18px rgba(255,111,179,0.25);
+    }
+
+    .scissor.s1 { left: 2%; animation-duration: 12s; animation-delay: -2s; }
+    .scissor.s2 { left: 20%; animation-duration: 15s; animation-delay: -7s; }
+    .scissor.s3 { left: 39%; animation-duration: 13s; animation-delay: -3s; }
+    .scissor.s4 { left: 57%; animation-duration: 16s; animation-delay: -9s; }
+    .scissor.s5 { left: 76%; animation-duration: 14s; animation-delay: -5s; }
+    .scissor.s6 { left: 92%; animation-duration: 15.5s; animation-delay: -10s; }
+
+    @keyframes bladeA {
+      0%,100% { transform: translate(-50%, -50%) rotate(-36deg); }
+      50% { transform: translate(-50%, -50%) rotate(-12deg); }
+    }
+
+    @keyframes bladeB {
+      0%,100% { transform: translate(-50%, -50%) rotate(36deg); }
+      50% { transform: translate(-50%, -50%) rotate(12deg); }
+    }
+
+    @keyframes fall {
+      0% { transform: translate3d(0, -12%, 0) rotate(18deg) scale(.94); opacity: 0; }
+      10% { opacity: 1; }
+      50% { transform: translate3d(24px, 56vh, 0) rotate(130deg) scale(1); }
+      100% { transform: translate3d(-16px, 124vh, 0) rotate(298deg) scale(.98); opacity: 0; }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(8,7,13,0.52);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: transform .35s ease;
+    }
+
+    header.hide { transform: translateY(-100%); }
+
+    .nav {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .brand strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 2.5vw, 3.2rem);
+      letter-spacing: -.04em;
+      margin-bottom: 8px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-size: .74rem;
+    }
+
+    .nav-links,
+    .nav-actions,
+    .hero-actions,
+    .hero-facts {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a,
+    .btn,
+    .icon-btn {
+      text-decoration: none;
+      color: var(--text);
+      transition: .28s ease;
+    }
+
+    .nav-links a {
+      padding: 10px 8px;
+      color: #e8dce6;
+      font-size: .96rem;
+      letter-spacing: .02em;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,111,179,0.36);
+      background: rgba(255,255,255,0.03);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(255,111,179,0.25), rgba(255,111,179,0.12));
+      box-shadow: 0 14px 32px rgba(255,111,179,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .btn:hover,
+    .fact:hover,
+    .info-card:hover,
+    .service-card:hover,
+    .review:hover,
+    .contact-card:hover,
+    .gallery-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 86px);
+      display: flex;
+      align-items: center;
+      padding: 40px 0 32px;
+      z-index: 2;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      padding: 32px 0 0;
+      position: relative;
+      z-index: 3;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #ffd0e5;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+      margin-bottom: 22px;
+    }
+
+    h1,h2,h3,p { margin: 0; }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(3rem, 5.6vw, 5.8rem);
+      line-height: .95;
+      letter-spacing: -.05em;
+      max-width: 820px;
+    }
+
+    .accent {
+      color: #f6b9d7;
+      text-shadow: 0 0 22px rgba(255,111,179,0.12);
+    }
+
+    .hero-divider {
+      width: min(340px, 70%);
+      height: 1px;
+      margin: 28px 0 26px;
+      background: linear-gradient(90deg, rgba(255,111,179,0.7), rgba(255,255,255,0.14), transparent);
+      position: relative;
+    }
+
+    .hero-divider::after {
+      content: "✦";
+      position: absolute;
+      right: -2px;
+      top: -11px;
+      color: #ffb4d6;
+      font-size: .85rem;
+    }
+
+    .hero-copy p {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 760px;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 72% 24%, rgba(255,222,237,0.28), transparent 10%),
+        radial-gradient(circle at 70% 24%, rgba(255,111,179,0.22), transparent 18%),
+        radial-gradient(circle at 82% 44%, rgba(255,111,179,0.20), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%),
+        linear-gradient(145deg, #130c1a 0%, #0d0913 52%, #08070d 100%);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 70% 26%, rgba(255,208,228,0.18), transparent 10%),
+        linear-gradient(90deg, transparent 0 55%, rgba(255,111,179,0.08) 70%, transparent 82%);
+      pointer-events: none;
+    }
+
+    .portrait {
+      position: absolute;
+      right: -3%;
+      bottom: 0;
+      width: 88%;
+      height: 96%;
+      border-radius: 44% 44% 10% 10% / 34% 34% 8% 8%;
+      background:
+        radial-gradient(circle at 58% 14%, rgba(255,243,248,0.72), transparent 8%),
+        radial-gradient(circle at 53% 26%, rgba(255,194,221,0.28), transparent 14%),
+        radial-gradient(circle at 55% 38%, rgba(255,111,179,0.18), transparent 20%),
+        linear-gradient(180deg, rgba(255,241,246,0.08), rgba(255,111,179,0.06) 18%, rgba(24,15,30,0.96) 48%, rgba(7,6,11,1) 100%);
+      box-shadow: 0 0 90px rgba(255,111,179,0.16);
+      transform: rotate(-5deg);
+      opacity: .98;
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: 8% 18% 22% 18%;
+      border-radius: 42% 42% 20% 20% / 30% 30% 24% 24%;
+      background:
+        radial-gradient(circle at 60% 18%, rgba(255,231,239,0.78), transparent 10%),
+        radial-gradient(circle at 52% 31%, rgba(255,193,220,0.26), transparent 17%),
+        linear-gradient(180deg, rgba(58,31,65,0.35), rgba(11,9,16,0.96));
+      box-shadow: inset 0 0 80px rgba(255,255,255,0.03), 0 0 80px rgba(255,111,179,0.08);
+      filter: blur(.2px);
+    }
+
+    .rating-badge {
+      position: absolute;
+      right: 8%;
+      bottom: 11%;
+      padding: 22px 24px;
+      min-width: 170px;
+      border-radius: 26px;
+      background: rgba(33,18,37,0.62);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      z-index: 3;
+    }
+
+    .rating-badge strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 2.3rem;
+      margin-bottom: 8px;
+      letter-spacing: -.04em;
+    }
+
+    .rating-badge span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: .95rem;
+    }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .fact,
+    .service-card,
+    .review,
+    .gallery-card,
+    .contact-card,
+    .faq,
+    .section-panel {
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.05);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: .28s ease;
+    }
+
+    .fact {
+      padding: 20px 20px 18px;
+      min-height: 110px;
+    }
+
+    .fact small {
+      display: block;
+      color: #ffb9d7;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .72rem;
+      margin-bottom: 10px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+
+    .fact span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: .96rem;
+    }
+
+    section { padding: 90px 0; position: relative; z-index: 2; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .section-head small {
+      display: inline-block;
+      color: #ffbfdc;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      letter-spacing: -.04em;
+      line-height: 1;
+      max-width: 740px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 520px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      margin-bottom: 28px;
+      background: linear-gradient(90deg, rgba(255,111,179,0.66), rgba(255,255,255,0.1), transparent);
+    }
+
+    .service-grid,
+    .review-grid,
+    .gallery-grid,
+    .contact-grid,
+    .faq-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .service-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .review-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .gallery-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .contact-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+
+    .service-card,
+    .review,
+    .gallery-card,
+    .contact-card,
+    .faq,
+    .section-panel {
+      padding: 24px;
+    }
+
+    .service-card h3,
+    .contact-card h3,
+    .faq summary,
+    .section-panel h3 {
+      font-family: Georgia, serif;
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p,
+    .review p,
+    .contact-card p,
+    .faq p,
+    .section-panel p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-card li {
+      padding: 11px 13px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #efdfeb;
+      font-size: .95rem;
+    }
+
+    .review .stars {
+      color: #ffd7a6;
+      letter-spacing: .18em;
+      font-size: .9rem;
+      margin-bottom: 14px;
+    }
+
+    .review footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #ffbfdc;
+      font-size: .94rem;
+    }
+
+    .gallery-card {
+      min-height: 250px;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(255,255,255,0.08), transparent 20%),
+        linear-gradient(145deg, #17101f, #0c0912 68%, #09070d);
+    }
+
+    .gallery-card span {
+      padding: 13px 15px;
+      border-radius: 16px;
+      background: rgba(13,9,18,0.62);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ffd4e6;
+      font-size: .94rem;
+    }
+
+    .contact-card a,
+    footer a { color: #ffd3e5; text-decoration: none; }
+
+    iframe {
+      width: 100%;
+      min-height: 440px;
+      border: 0;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq p { margin-top: 14px; }
+
+    .floating-actions {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: grid;
+      gap: 10px;
+      z-index: 50;
+    }
+
+    .icon-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(255,111,179,0.3), rgba(255,255,255,0.08));
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.28);
+      font-size: 1.2rem;
+    }
+
+    footer {
+      padding: 24px 0 42px;
+      color: var(--muted);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .85s ease, transform .85s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid,
+      .contact-grid,
+      .service-grid,
+      .review-grid,
+      .gallery-grid,
+      .hero-facts {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-visual { min-height: 620px; }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        align-items: start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 26px;
+      }
+
+      .hero-grid,
+      .contact-grid,
+      .service-grid,
+      .review-grid,
+      .gallery-grid,
+      .hero-facts {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links,
+      .nav-actions,
+      .hero-actions { width: 100%; }
+
+      .btn { width: 100%; }
+      .nav-actions .btn { width: auto; }
+      .hero-visual { min-height: 520px; }
+      .portrait { width: 96%; right: -8%; }
+      h1 { font-size: clamp(2.6rem, 12vw, 4rem); }
+      .scissor.s5,
+      .scissor.s6 { display: none; }
+      iframe { min-height: 340px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="ambient"><span></span><span></span><span></span></div>
+
+  <div class="scissor-layer" aria-hidden="true">
+    <span class="scissor s1"><i class="blade a"></i><i class="blade b"></i><i class="ring a"></i><i class="ring b"></i><i class="pivot"></i></span>
+    <span class="scissor s2"><i class="blade a"></i><i class="blade b"></i><i class="ring a"></i><i class="ring b"></i><i class="pivot"></i></span>
+    <span class="scissor s3"><i class="blade a"></i><i class="blade b"></i><i class="ring a"></i><i class="ring b"></i><i class="pivot"></i></span>
+    <span class="scissor s4"><i class="blade a"></i><i class="blade b"></i><i class="ring a"></i><i class="ring b"></i><i class="pivot"></i></span>
+    <span class="scissor s5"><i class="blade a"></i><i class="blade b"></i><i class="ring a"></i><i class="ring b"></i><i class="pivot"></i></span>
+    <span class="scissor s6"><i class="blade a"></i><i class="blade b"></i><i class="ring a"></i><i class="ring b"></i><i class="pivot"></i></span>
+  </div>
+
+  <header id="header">
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <strong>Derya</strong>
+        <span>bayan kuaförü</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#top">Ana Sayfa</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#yorumlar">Yorumlar</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn primary" href="https://wa.me/905307843505?text=Merhaba%20Derya%20Bayan%20Kuaf%C3%B6r%C3%BC%20i%C3%A7in%20randevu%20almak%20istiyorum" target="_blank" rel="noopener noreferrer">Randevu Al</a>
+        <a class="btn" href="tel:+905307843505">0530 784 35 05</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">çayırova saç ve güzellik deneyimi</div>
+            <h1>saçına tarzına ve <span class="accent">gününe ışıltı</span> katan premium dokunuş</h1>
+            <div class="hero-divider"></div>
+            <p>Derya Bayan Kuaförü günlük bakımda da özel gün hazırlığında da güçlü görünüm isteyen kadınlar için saç ve güzellik hizmetlerini tek bir yerde buluşturur Saç boyama balyaj ombre gelin başı makyaj manikür pedikür ve daha fazlası modern dokunuşla sunulur</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="https://wa.me/905307843505?text=Merhaba%20Derya%20Bayan%20Kuaf%C3%B6r%C3%BC%20i%C3%A7in%20randevu%20olu%C5%9Fturmak%20istiyorum" target="_blank" rel="noopener noreferrer">Hemen Randevu Al</a>
+              <a class="btn" href="https://wa.me/905307843505?text=Merhaba%20bilgi%20almak%20istiyorum" target="_blank" rel="noopener noreferrer">WhatsApp ile Yaz</a>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal">
+            <div class="portrait"></div>
+            <div class="rating-badge">
+              <strong>4.3</strong>
+              <span>34 yorum<br/>güven veren salon deneyimi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-facts reveal">
+          <article class="fact"><small>çalışma saatleri</small><strong>09:00 - 20:00</strong><span>haftanın her günü açık</span></article>
+          <article class="fact"><small>uzman dokunuş</small><strong>renk ve bakım</strong><span>özenli ve modern uygulamalar</span></article>
+          <article class="fact"><small>öne çıkan</small><strong>gelin başı</strong><span>özel gün hazırlığında güçlü görünüm</span></article>
+          <article class="fact"><small>konum</small><strong>çayırova kocaeli</strong><span>merkezi ve kolay ulaşım</span></article>
+          <article class="fact"><small>instagram</small><strong>@deryakuaforrr</strong><span>çalışmaları yakından takip et</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hizmetler">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <small>hizmetler</small>
+            <h2>saç ve güzellikte tek salonda toplu premium deneyim</h2>
+          </div>
+          <p>kalabalık olmayan düzenli ve güven veren bir içerik yapısıyla ziyaretçi ne sunduğunu ilk bakışta net görsün diye hizmetleri sade biçimde yerleştirdim</p>
+        </div>
+        <div class="divider"></div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <h3>renk uygulamaları</h3>
+            <p>saça daha canlı daha dengeli ve daha premium görünüm kazandıran modern renk geçişleri</p>
+            <ul>
+              <li>saç boyama</li>
+              <li>balyaj</li>
+              <li>ombre saç rengi</li>
+              <li>saça ışıltı atma</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <h3>kesim ve şekillendirme</h3>
+            <p>saçın yapısına ve yüz hattına göre düzenli modern ve daha güçlü görünüm odaklı uygulamalar</p>
+            <ul>
+              <li>kadın saç kesimi</li>
+              <li>çocuk saç kesimi</li>
+              <li>fön</li>
+              <li>topuz</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <h3>özel gün hazırlığı</h3>
+            <p>düğün nişan davet ve özel organizasyonlar için toplu hazırlık imkanı</p>
+            <ul>
+              <li>gelin başı</li>
+              <li>porselen makyaj</li>
+              <li>makyaj hizmetleri</li>
+              <li>özel gün topuzu</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <h3>bakım ve onarım</h3>
+            <p>yıpranan saç görünümünü toparlayan daha parlak ve daha düzenli sonuç veren bakım alanı</p>
+            <ul>
+              <li>keratin tedavileri</li>
+              <li>saç düzleştirme</li>
+              <li>perma</li>
+              <li>kıvırcık saç uygulamaları</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <h3>güzellik hizmetleri</h3>
+            <p>saç tarafını tamamlayan yüz ve genel bakım uygulamalarıyla bütünlük sağlayan hizmetler</p>
+            <ul>
+              <li>ağda</li>
+              <li>makyaj</li>
+              <li>şampuan ve saç kremi desteği</li>
+              <li>rasta</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <h3>el ayak bakımı</h3>
+            <p>randevuyu tamamlayan bakımlı ve özenli görünüm için destekleyici ek hizmetler</p>
+            <ul>
+              <li>manikür</li>
+              <li>pedikür</li>
+              <li>özel gün öncesi bakım</li>
+              <li>tek ziyarette kombin hizmet</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <small>galeri</small>
+            <h2>salonun estetik çizgisini ilk bakışta hissettiren vitrin alanı</h2>
+          </div>
+          <p>gerçek fotoğraflar eklendiğinde bu düzen daha da pahalı görünür şimdilik bile boş durmayan premium bloklar kurdum</p>
+        </div>
+        <div class="divider"></div>
+
+        <div class="gallery-grid">
+          <div class="gallery-card reveal"><span>balyaj ve yumuşak geçişler</span></div>
+          <div class="gallery-card reveal"><span>ışıltılı ombre tonları</span></div>
+          <div class="gallery-card reveal"><span>gelin başı ve özel gün saçı</span></div>
+          <div class="gallery-card reveal"><span>makyaj ve bakım dokunuşları</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="yorumlar">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <small>yorumlar</small>
+            <h2>müşteride güven uyandıran sıcak ama premium izlenim</h2>
+          </div>
+          <p>yorum alanını da fazla şişirmeden temiz tuttum böylece kalite hissi bozulmadan güven katmanı eklenmiş oldu</p>
+        </div>
+        <div class="divider"></div>
+
+        <div class="review-grid">
+          <article class="review reveal">
+            <div class="stars">★★★★★</div>
+            <p>renk geçişleri çok temiz durdu saçım ağırlaşmadan daha canlı bir hava aldı salonun eli gerçekten dengeli</p>
+            <footer>renk uygulaması deneyimi</footer>
+          </article>
+          <article class="review reveal">
+            <div class="stars">★★★★★</div>
+            <p>özel gün için saç ve makyajı birlikte toparlamak çok rahattı sonuç fotoğraflarda da çok iyi durdu</p>
+            <footer>özel gün hazırlığı deneyimi</footer>
+          </article>
+          <article class="review reveal">
+            <div class="stars">★★★★★</div>
+            <p>içerideki hava rahat uygulamalar özenli sonuç da bakımlı duruyor aceleye gelmiş hissi vermiyor</p>
+            <footer>genel salon hissi</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-panel reveal">
+          <div class="section-head" style="margin-bottom:20px">
+            <div>
+              <small>randevu</small>
+              <h2 style="font-size:clamp(2rem,3vw,3rem)">hazırsan direkt yaz ya da ara</h2>
+            </div>
+            <p>randevu almak bilgi istemek veya özel gün hazırlığını planlamak için hızlı şekilde iletişime geçebilirsin</p>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://wa.me/905307843505?text=Merhaba%20Derya%20Bayan%20Kuaf%C3%B6r%C3%BC%20i%C3%A7in%20randevu%20olu%C5%9Fturmak%20istiyorum" target="_blank" rel="noopener noreferrer">WhatsApp ile Randevu Al</a>
+            <a class="btn" href="tel:+905307843505">Telefonla Ara</a>
+            <a class="btn" href="https://www.instagram.com/deryakuaforrr?igsh=MXZuN2E1NWhrcmR6Nw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <small>sık sorulanlar</small>
+            <h2>randevu öncesi akıldaki temel şeyler net olsun diye</h2>
+          </div>
+          <p>fazla uzatmadan soru cevap düzeni kurdum bu da ziyaretçinin mesaj atma eşiğini düşürür</p>
+        </div>
+        <div class="divider"></div>
+
+        <div class="faq-grid">
+          <details class="faq reveal">
+            <summary>randevu nasıl alabilirim <span>+</span></summary>
+            <p>telefonla arayabilir ya da WhatsApp üzerinden hızlı şekilde randevu oluşturabilirsin</p>
+          </details>
+          <details class="faq reveal">
+            <summary>özel gün için saç ve makyaj birlikte yapılabiliyor mu <span>+</span></summary>
+            <p>evet gelin başı topuz ve makyaj hizmetleri birlikte planlanabilir böylece hazırlık daha rahat ilerler</p>
+          </details>
+          <details class="faq reveal">
+            <summary>çalışma saatleri her gün aynı mı <span>+</span></summary>
+            <p>işletme haftanın her günü 09 00 ile 20 00 arasında açık görünmektedir çalışma saatleri farklı olabilir notu da korunmuştur</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <small>iletişim</small>
+            <h2>adres telefon ve harita aynı yerde temiz ve kolay erişim</h2>
+          </div>
+          <p>iletişim bölümünü de fazla kalabalık yapmadan doğrudan dönüşüme götüren şekilde kurdum</p>
+        </div>
+        <div class="divider"></div>
+
+        <div class="contact-grid">
+          <div style="display:grid; gap:18px;">
+            <article class="contact-card reveal">
+              <h3>telefon</h3>
+              <p><a href="tel:+905307843505">0530 784 35 05</a></p>
+            </article>
+            <article class="contact-card reveal">
+              <h3>adres</h3>
+              <p>Yenimahalle Fatih Caddesi 5107 2 Sk no 1 kat 1 41420 Çayırova Kocaeli</p>
+            </article>
+            <article class="contact-card reveal">
+              <h3>instagram</h3>
+              <p><a href="https://www.instagram.com/deryakuaforrr?igsh=MXZuN2E1NWhrcmR6Nw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">@deryakuaforrr</a></p>
+            </article>
+          </div>
+
+          <div class="reveal">
+            <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Yenimahalle%20Fatih%20Caddesi%205107%2F2.%20Sk.%20no%3A1%20kat%3A1%2041420%20%C3%87ay%C4%B1rova%20Kocaeli&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating-actions">
+    <a class="icon-btn" href="https://wa.me/905307843505?text=Merhaba%20randevu%20olu%C5%9Fturmak%20istiyorum" target="_blank" rel="noopener noreferrer">✆</a>
+    <a class="icon-btn" href="#top">↑</a>
+  </div>
+
+  <footer>
+    <div class="container footer-box">
+      <div>
+        <strong style="display:block; margin-bottom:8px; color:var(--text)">Derya Bayan Kuaförü</strong>
+        <span>çayırova için premium saç ve güzellik deneyimi</span>
+      </div>
+      <div>
+        <span>bu sürüm daha düzenli premium ve kontrollü tipografi mantığıyla kuruldu</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    const progress = document.getElementById('progress');
+    let lastScroll = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? y / max * 100 : 0) + '%';
+      if (y > lastScroll && y > 120) header.classList.add('hide');
+      else header.classList.remove('hide');
+      lastScroll = y;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
